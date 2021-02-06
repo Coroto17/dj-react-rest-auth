@@ -23,5 +23,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
-    re_path(".*", TemplateView.as_view(template_name="index.html"))
+    path("", TemplateView.as_view(template_name="index.html"))
 ]

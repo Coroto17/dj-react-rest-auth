@@ -24,7 +24,7 @@ SECRET_KEY = "jz(rouioh7c968^f!hdn*1gr52p76ajwnx0nw%3u^(3+$p=x##"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["dj-react-rest-auth.herokuapp.com"]
+ALLOWED_HOSTS = ["dj-react-rest-auth.herokuapp.com", "localhost"]
 
 
 # Application definition
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
 
     "articles",
+    
 ]
 
 SITE_ID = 1
@@ -135,9 +136,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [BASE_DIR / "build/static"]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+
+
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -148,8 +151,10 @@ REST_FRAMEWORK = {
     ]
 }
 
-CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:3033", "http://localhost:3033", "https://dj-react-rest-auth.herokuapp.com"]
+CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:8000", "http://localhost:8000", "http://localhost:3033", "https://dj-react-rest-auth.herokuapp.com"]
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_AUTHENTICATION_METHOD = "username"
 ACCOUNT_EMAIL_REQUIRED = False
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
