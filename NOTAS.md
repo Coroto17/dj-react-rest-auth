@@ -44,4 +44,8 @@ Para chequear/cambiar si el email es obligatorio o no, la info está en `django-
 * Agregar `"STATIC_ROOT"` y `"STATIC_FILES_STORAGE"` keys a `settings.py`.
 * La parte de modificar `wsgi.py` la dejo por ahora en pause por si acaso.
 * Agregar la app a `ALLOWED_HOSTS` en `settings.py`.
+* Ejecutar `npm run build` para hacer el build del frontend en el directorio `build.
+* Agregar el directorio `build` a `settings.py` en la parte de TEMPLATES DIR.
+* Agregamos el script `postinstall` al `package.json`.
+* Ahora vamos a referenciar el index.html del directorio `build` en django. En las urls de djreact: `re_path(".*", TemplateView.as_view(template_name="index.html"))`.
 

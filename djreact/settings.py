@@ -71,7 +71,7 @@ ROOT_URLCONF = "djreact.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "build"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -147,7 +147,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:3033", "http://localhost:3033"]
+CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:3033", "http://localhost:3033", "https://dj-react-rest-auth.herokuapp.com"]
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_AUTHENTICATION_METHOD = "username"
