@@ -13,14 +13,14 @@ class CustomForm extends React.Component {
 
         switch ( requestType ) {
             case 'post':
-                return axios.post('https://dj-react-rest-auth.herokuapp.com/api/', {
+                return axios.post('/api/', {
                     title: title,
                     content: content
                 })
                 .then(res => console.log(res))
                 .catch(error => console.err(error));
             case 'put':
-                return axios.put(`https://dj-react-rest-auth.herokuapp.com/api/${articleID}/`, {
+                return axios.put(`/api/${articleID}/`, {
                     title: title,
                     content: content
                 })
