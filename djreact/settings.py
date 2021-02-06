@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "jz(rouioh7c968^f!hdn*1gr52p76ajwnx0nw%3u^(3+$p=x##"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["dj-react-rest-auth.herokuapp.com", "localhost"]
 
