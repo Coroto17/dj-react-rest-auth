@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "django.contrib.sites",
     "allauth",
     "allauth.account",
@@ -46,9 +45,7 @@ INSTALLED_APPS = [
     "dj_rest_auth",
     "rest_framework",
     "rest_framework.authtoken",
-
     "articles",
-    
 ]
 
 SITE_ID = 1
@@ -56,7 +53,7 @@ SITE_ID = 1
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     # whitenoise para servir estáticos
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     # cors-headers middleware, el orden importa
     "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -91,22 +88,22 @@ WSGI_APPLICATION = "djreact.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd8drpm223egor3',
-        'USER': 'fwzgueoazlamjd',
-        'PASSWORD': 'e227fb44c1d272285accd988ee33dd3e5d41949653cca7016fd25af0de8cab79',
-        'HOST': 'ec2-54-162-119-125.compute-1.amazonaws.com',
-        'PORT': '5432',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd8drpm223egor3',
+#         'USER': 'fwzgueoazlamjd',
+#         'PASSWORD': 'e227fb44c1d272285accd988ee33dd3e5d41949653cca7016fd25af0de8cab79',
+#         'HOST': 'ec2-54-162-119-125.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
@@ -146,25 +143,30 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [BASE_DIR / "build/static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
-
-
-
+STATICFILES_DIRS = [BASE_DIR / "build/static"]
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     "DEFAULT_PERMISSION_CLASSES": [
-        # "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
-        "rest_framework.permissions.AllowAny",
-    ]
+        "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
+        # "rest_framework.permissions.AllowAny",
+        # "rest_framework.permissions.IsAuthenticatedOrReadOnly"
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication"
+    ],
 }
 
-CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:8000", "http://localhost:8000", "http://localhost:3033", "https://dj-react-rest-auth.herokuapp.com"]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://localhost:3033",
+    "https://dj-react-rest-auth.herokuapp.com",
+]
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_AUTHENTICATION_METHOD = "username"
 ACCOUNT_EMAIL_REQUIRED = False
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"

@@ -48,4 +48,12 @@ Para chequear/cambiar si el email es obligatorio o no, la info está en `django-
 * Agregar el directorio `build` a `settings.py` en la parte de TEMPLATES DIR.
 * Agregamos el script `postinstall` al `package.json`.
 * Ahora vamos a referenciar el index.html del directorio `build` en django. En las urls de djreact: `re_path(".*", TemplateView.as_view(template_name="index.html"))`.
+* Para que andara el service worker, tuve que colocarlo tambien como path en las urls del proyecto djreact.
+
+## AUTENTICAR PARA VER LA PÁGINA PRINCIPAL.
+
+Aquí lo que hice fue cambiar permisos de AllowAny en el `settings.py`.
+De todas maneras hay que leer bien la [documentacion](https://www.django-rest-framework.org/api-guide/permissions/)
+
+[Y tambien la de dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/latest/introduction.html#)
 

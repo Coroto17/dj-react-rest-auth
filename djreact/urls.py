@@ -23,9 +23,9 @@ urlpatterns = [
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
     path("api/", include("articles.api.urls")),
     path("admin/", admin.site.urls),
-    re_path(r'^service-worker.js', TemplateView.as_view(
-    template_name="service-worker.js",
-    content_type='application/javascript',
-), name='service-worker.js'),
+#     re_path(r'^service-worker.js', TemplateView.as_view(
+#     template_name="service-worker.js",
+#     content_type='application/javascript',
+# ), name='service-worker.js'),
     re_path(r'^.*', TemplateView.as_view(template_name='index.html')),
 ]

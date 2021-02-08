@@ -1,37 +1,53 @@
-import React from 'react';
-import axios from 'axios';
-
-import Articles from '../components/Article';
-import CustomForm from '../components/Form';
+import React from "react";
+import axios from "axios";
+import { connect } from "react-redux";
+import Articles from "../components/Article";
+import CustomForm from "../components/Form";
 
 class ArticleList extends React.Component {
+  state = {
+    articles: [],
+  };
 
-    state = {
-        articles: []
-    }
+  componentDidMount() {
+    axios.get("/api/").then((res) => {
+      this.setState({
+        articles: res.data,
+      });
+    });    
+  }
 
-    componentDidMount() {
-        axios.get('https://dj-react-rest-auth.herokuapp.com/api/')
-            .then(res => {
-                this.setState({
-                    articles: res.data
-                });
-            })
+  componentWillReceiveProps(newProps) {
+    console.log(newProps);
+    if (newProps.token) {
+      axios.defaults.headers = {
+        "Content-Type": "application/json",
+        Authorization: newProps.token,
+      };
+      axios.get("/api/").then((res) => {
+        this.setState({
+          articles: res.data,
+        });
+      });
     }
+  }
 
-    render() {
-        return (
-            <div>
-                <Articles data={this.state.articles} />
-                <br />
-                <h2>Create an article</h2>
-                <CustomForm 
-                    requestType="post"
-                    articleID={null}
-                    btnText="Create" />
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Articles data={this.state.articles} />
+        <br />
+        <h2>Create an article</h2>
+        <CustomForm requestType="post" articleID={null} btnText="Create" />
+      </div>
+    );
+  }
 }
 
-export default ArticleList;
+const mapStateToProps = (state) => {
+  return {
+    token: state.token,
+  };
+};
+
+export default connect(mapStateToProps)(ArticleList);
